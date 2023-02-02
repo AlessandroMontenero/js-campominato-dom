@@ -45,7 +45,7 @@ document.getElementById("start").onclick = function createGrid() {
                 if (randomArray.includes(parseInt(content))) {
                     box.innerHTML = '<i class="fa-solid fa-bomb"></i>'
                     loose = true
-                 /*     document.getElementById("loose").style.display = "block" */
+                    document.getElementById("loose").style.display = "block" 
                     document.getElementById("loose").innerHTML = '<h4>Hai Perso!</h4><br><h5>Il tuo score è ' + counterClick + ' click.</h5>'
                 }           
                 else {
