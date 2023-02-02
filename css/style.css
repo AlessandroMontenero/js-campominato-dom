@@ -38,8 +38,7 @@ body {
     header button {
         text-align: center;
         background-color: var(--barsBackgroundColor);
-        border: 1px solid var(--borderColor);
-        border-radius: 20px;
+        border: 2px solid var(--borderColor);
         font-size: 0.8rem;
         padding: 8px;
         margin: 0 1rem 0 1rem
