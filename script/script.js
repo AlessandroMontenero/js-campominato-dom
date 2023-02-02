@@ -38,18 +38,61 @@ document.getElementById("start").onclick = function createGrid() {
         
             box.onclick = function boxClick(){
                 counterClick++
+                let nearBomb = 0
                 if (loose != true) {
                 this.classList.add("azure")
-                if (box.innerHTML == '') {
-                    if (randomArray.includes(parseInt(content))) {
-                        box.innerHTML = '<i class="fa-solid fa-bomb"></i>'
-                        loose = true
-                        document.getElementById("loose").style.display = "block"
-                        document.getElementById("loose").innerHTML = '<h4>Hai Perso!</h4><br><h5>Il tuo score è ' + counterClick + ' click.</h5>'
-                    }           
-                } 
+                
+                if (randomArray.includes(parseInt(content))) {
+                    box.innerHTML = '<i class="fa-solid fa-bomb"></i>'
+                    loose = true
+                     document.getElementById("loose").style.display = "block"
+                    document.getElementById("loose").innerHTML = '<h4>Hai Perso!</h4><br><h5>Il tuo score è ' + counterClick + ' click.</h5>'
+                }           
                 else {
-                    box.innerHTML = ''
+                    /* Funzione per sapere se ci sono bombe vicine */
+                    function nearBombs() {
+                        let nearSpots = []
+                        if (box.classList.contains('hard')) {
+                            nearSpots = [6,7,8]
+                        }
+                        if (box.classList.contains('easy')){
+                            nearSpots = [9,10,11]
+                        }
+                        if(box.classList.contains('medium')) {
+                            nearSpots = [8,9,10]
+                        }
+                        if (randomArray.includes(content - nearSpots[0])){
+                            nearBomb += 1
+                        }
+                        if (randomArray.includes(content - nearSpots[1])){
+                            nearBomb += 1
+                        }
+                        if (randomArray.includes(content - nearSpots[2])){
+                            nearBomb += 1
+                        }
+                        if (randomArray.includes(content - 1)){
+                            nearBomb += 1
+                        }
+                        if (randomArray.includes(content + 1)){
+                            nearBomb += 1
+                        }
+                        if (randomArray.includes(content + nearSpots[0])){
+                            nearBomb += 1
+                        }
+                        if (randomArray.includes(content + nearSpots[1])){
+                            nearBomb += 1
+                        }
+                        if (randomArray.includes(content + nearSpots[2])){
+                            nearBomb += 1
+                        }
+                        console.log(content)
+                        console.log(nearSpots[1])
+                        if (nearBomb != 0) {
+                            box.innerHTML = nearBomb
+                        }
+                    }
+                    nearBombs()
+                    
                 }
                 /* Perdita */
                 if (loose == true) {
