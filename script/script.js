@@ -45,44 +45,50 @@ document.getElementById("start").onclick = function createGrid() {
                 if (randomArray.includes(parseInt(content))) {
                     box.innerHTML = '<i class="fa-solid fa-bomb"></i>'
                     loose = true
-                     document.getElementById("loose").style.display = "block"
+                 /*     document.getElementById("loose").style.display = "block" */
                     document.getElementById("loose").innerHTML = '<h4>Hai Perso!</h4><br><h5>Il tuo score è ' + counterClick + ' click.</h5>'
                 }           
                 else {
                     /* Funzione per sapere se ci sono bombe vicine */
-                    function nearBombs() {
+                    
                         let nearSpots = []
                         if (box.classList.contains('hard')) {
                             nearSpots = [6,7,8]
+                            rightColumn = [1, 8, 15,22, 29, 35, 42, 49]
+                            leftColumn = [7, 14, 21, 28, 35, 42, 49]
                         }
                         if (box.classList.contains('easy')){
                             nearSpots = [9,10,11]
+                            rightColumn = [1,11,21,31,41,51,61,71,81,91]
+                            leftColumn = [10,20,30,40,50,60,70,80,90,100]
                         }
                         if(box.classList.contains('medium')) {
                             nearSpots = [8,9,10]
+                            rightColumn = [1,10,19,28,37,46,55,64,73]
+                            leftColumn = [9,18,27,36,45,54,63,72,81]
                         }
-                        if (randomArray.includes(content - nearSpots[0])){
+                        if (randomArray.includes(content - nearSpots[0])&& !leftColumn.includes(content)){
                             nearBomb += 1
                         }
                         if (randomArray.includes(content - nearSpots[1])){
                             nearBomb += 1
                         }
-                        if (randomArray.includes(content - nearSpots[2])){
+                        if (randomArray.includes(content - nearSpots[2]) && !rightColumn.includes(content)){
                             nearBomb += 1
                         }
-                        if (randomArray.includes(content - 1)){
+                        if (randomArray.includes(content - 1) && !rightColumn.includes(content)){
                             nearBomb += 1
                         }
-                        if (randomArray.includes(content + 1)){
+                        if (randomArray.includes(content + 1)&& !leftColumn.includes(content)){
                             nearBomb += 1
                         }
-                        if (randomArray.includes(content + nearSpots[0])){
+                        if (randomArray.includes(content + nearSpots[0]) && !rightColumn.includes(content)){
                             nearBomb += 1
                         }
                         if (randomArray.includes(content + nearSpots[1])){
                             nearBomb += 1
                         }
-                        if (randomArray.includes(content + nearSpots[2])){
+                        if (randomArray.includes(content + nearSpots[2]) && !leftColumn.includes(content)){
                             nearBomb += 1
                         }
                         console.log(content)
@@ -90,8 +96,8 @@ document.getElementById("start").onclick = function createGrid() {
                         if (nearBomb != 0) {
                             box.innerHTML = nearBomb
                         }
-                    }
-                    nearBombs()
+                    
+                    
                     
                 }
                 /* Perdita */
