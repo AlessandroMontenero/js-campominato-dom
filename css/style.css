@@ -17,18 +17,21 @@ html, button, select {
 body {
     margin: 0;
     background-color: var(--backgroundColor);
+    overflow: auto;
 }
 
 /* Header */
     header {
         position: fixed;
         width: 100%;
+        height: 4rem;
         top: 0;
         background-color: var(--barsBackgroundColor);
         display: flex;
         justify-content: space-between;
         align-items: center;
         text-align: center;
+        z-index: 1;
     }
 
     header select,
@@ -52,7 +55,9 @@ body {
 /* Main */
     .container {
         width: 100%;
-        height: 100vh;
+        height: 90vh;
+        margin-top: 4rem;
+        padding-bottom: 2rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -60,6 +65,7 @@ body {
 
 /* Grid */
     .grid {
+        position: relative;
         width: 60%;
         max-width: 500px;
         min-width: 420px;
@@ -86,15 +92,38 @@ body {
         color: var(--textColor);
     }
 
+    .fa-bomb {
+        font-size: 1.2rem;
+    }
+
+    /* Loose */
+    .loose {
+        position: absolute;
+        background-color: white;
+        padding: 1rem;
+        border: 2px solid var(--borderColor);
+        display: none;
+        text-align: center;
+    }
+
+    .loose h4 {
+        margin: 10px;
+    }
+    .loose h5 {
+        margin: 5px;
+    }
 /* Footer */
     footer {
-        position: absolute;
+        position: fixed;
         width: 100%;
+        height: 2rem;
         bottom: 0;
         background-color: var(--barsBackgroundColor);
+        display: flex;
+        align-items: center;
     }
 
     footer h4 {
         font-size: 0.8rem;
-        margin: 1rem;
+        margin-left: 10px;
     }
