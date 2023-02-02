@@ -91,8 +91,6 @@ document.getElementById("start").onclick = function createGrid() {
                         if (randomArray.includes(content + nearSpots[2]) && !leftColumn.includes(content)){
                             nearBomb += 1
                         }
-                        console.log(content)
-                        console.log(nearSpots[1])
                         if (nearBomb != 0) {
                             box.innerHTML = nearBomb
                         }
