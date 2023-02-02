@@ -83,7 +83,16 @@ body {
         align-items: center;
         background-color: var(--gridColor);
         transition: background-color 0.1s linear, color 0.1s linear;
-        font-size: 0.8rem;    
+    }
+
+    .hard .fa-bomb {
+        font-size: 2rem;    
+    }
+    .medium .fa-bomb {
+        font-size: 1.5rem;
+    }
+    .easy .fa-bomb {
+        font-size: 1.3rem;
     }
 
     .azure {
@@ -91,8 +100,8 @@ body {
         color: var(--textColor);
     }
 
-    .fa-bomb {
-        font-size: 1.2rem;
+    .bomb {
+        background-color: #fb7b74;
     }
 
     /* Loose */

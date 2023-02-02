@@ -42,10 +42,11 @@ document.getElementById("start").onclick = function createGrid() {
         }
 
         /* Box */
-        function newBox(content) {
+        function newBox(content, diff) {
             /* Funzione per creare un div classe "box" */
             let box = document.createElement('div') 
-            box.classList.add("box")    
+            box.classList.add("box") 
+            box.classList.add(diff)       
             box.setAttribute('id',content)
             gridId.appendChild(box)
             
@@ -68,13 +69,14 @@ document.getElementById("start").onclick = function createGrid() {
                     box.innerHTML = ''
                 }
                 console.log(counterClick)
-                 /* Perdita */
-                 if (loose == true) {
+                /* Perdita */
+                if (loose == true) {
                     for (let i = 0; i < randomArray.length; i++) {
                         let bombIndex = randomArray[i]
                         bombBox= document.getElementById(bombIndex)
                         bombBox.innerHTML = '<i class="fa-solid fa-bomb"></i>'
-                        bombBox.classList.add("azure")
+                        bombBox.classList.remove("azure")
+                        bombBox.classList.add("bomb")
                     }
                  }
                 }
@@ -85,9 +87,9 @@ document.getElementById("start").onclick = function createGrid() {
         
         
         /* Funzione per creare più box in base alla dimensione della griglia */
-        function multipleBoxes(template) {
+        function multipleBoxes(template, diff) {
             for (let i = 0; i < template; i++) {
-                newBox(i + 1, i + 1)
+                newBox(i + 1, diff)
             }
         }
         gridId.style.cssText = '' /* inizializzo CSS */
@@ -99,14 +101,14 @@ document.getElementById("start").onclick = function createGrid() {
         
         if (level == 'easy'){
             gridId.style.cssText = 'grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);'
-            multipleBoxes(100)
+            multipleBoxes(100, 'easy')
             createRandomArray(16, 100)
             console.log(createRandomArray(16, 100))
             
         }
         else if (level == 'medium') {
             gridId.style.cssText = 'grid-template-columns:repeat(9,1fr);grid-template-rows:repeat(9,1fr);'
-            multipleBoxes(81)
+            multipleBoxes(81, 'medium')
             createRandomArray(16, 81)
             console.log(createRandomArray(16, 81))
             
@@ -114,7 +116,7 @@ document.getElementById("start").onclick = function createGrid() {
         
         else if (level == 'hard') {
             gridId.style.cssText = 'grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(7,1fr);'
-            multipleBoxes(49)
+            multipleBoxes(49, 'hard')
             createRandomArray(16, 49)
             console.log(createRandomArray(16, 49))
         }
