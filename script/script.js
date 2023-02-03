@@ -31,7 +31,7 @@ document.getElementById("start").onclick = function createGrid() {
             let box = document.createElement('div') 
             box.classList.add("box") 
             box.classList.add(diff)       
-            box.setAttribute('id',content)
+            box.setAttribute('id',parseInt(content))
             gridId.appendChild(box)
             
             /* al click di un box, se non ho perso, controllo se è una bomba o se ha bombe vicine
@@ -45,6 +45,7 @@ document.getElementById("start").onclick = function createGrid() {
                 
                 if (randomArray.includes(parseInt(content))) {
                     box.innerHTML = '<i class="fa-solid fa-bomb"></i>'
+                    box.classList.add("bomb")
                     loose = true
                     document.getElementById("loose").style.display = "block" 
                     document.getElementById("loose").innerHTML = '<h4>Hai Perso!</h4><br><h5>Il tuo score è ' + (counterClick - 1) + ' click.</h5>'
@@ -104,14 +105,14 @@ document.getElementById("start").onclick = function createGrid() {
                 }
                 /* Perdita */
                 if (loose == true) {
-                    for (let i = 0; i < randomArray.length; i++) {
+                    for (let i = 1; i < randomArray.length; i++) {
                         let bombIndex = randomArray[i]
                         bombBox= document.getElementById(bombIndex)
                         bombBox.innerHTML = '<i class="fa-solid fa-bomb"></i>'
                         bombBox.classList.remove("azure")
                         bombBox.classList.add("bomb")
-                        
                     }
+
                  }
                 }
                 }
