@@ -53,9 +53,11 @@ document.getElementById("start").onclick = function createGrid() {
                     /* Funzione per sapere se ci sono bombe vicine */
                     
                         let nearSpots = []
+                        let rightColumn = []
+                        let leftColumn = []
                         if (box.classList.contains('hard')) {
                             nearSpots = [6,7,8]
-                            rightColumn = [1, 8, 15,22, 29, 35, 42, 49]
+                            rightColumn = [1, 8, 15,22, 29, 36, 43]
                             leftColumn = [7, 14, 21, 28, 35, 42, 49]
                         }
                         if (box.classList.contains('easy')){
@@ -68,6 +70,7 @@ document.getElementById("start").onclick = function createGrid() {
                             rightColumn = [1,10,19,28,37,46,55,64,73]
                             leftColumn = [9,18,27,36,45,54,63,72,81]
                         }
+
                         if (randomArray.includes(content - nearSpots[0])&& !leftColumn.includes(content)){
                             nearBomb += 1
                         }
@@ -107,6 +110,7 @@ document.getElementById("start").onclick = function createGrid() {
                         bombBox.innerHTML = '<i class="fa-solid fa-bomb"></i>'
                         bombBox.classList.remove("azure")
                         bombBox.classList.add("bomb")
+                        
                     }
                  }
                 }
