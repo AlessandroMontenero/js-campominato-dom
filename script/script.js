@@ -47,7 +47,7 @@ document.getElementById("start").onclick = function createGrid() {
                     box.innerHTML = '<i class="fa-solid fa-bomb"></i>'
                     loose = true
                     document.getElementById("loose").style.display = "block" 
-                    document.getElementById("loose").innerHTML = '<h4>Hai Perso!</h4><br><h5>Il tuo score è ' + counterClick + ' click.</h5>'
+                    document.getElementById("loose").innerHTML = '<h4>Hai Perso!</h4><br><h5>Il tuo score è ' + (counterClick - 1) + ' click.</h5>'
                 }           
                 else {
                     /* Funzione per sapere se ci sono bombe vicine */
