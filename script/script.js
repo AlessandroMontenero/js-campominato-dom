@@ -25,7 +25,7 @@ document.getElementById("start").onclick = function createGrid() {
             return randomArray
         }
 
-        /* Box */
+        /* funzione per creare un div con classe box e difficoltà selezionata */
         function newBox(content, diff) {
             /* Funzione per creare un div classe "box" */
             let box = document.createElement('div') 
@@ -34,7 +34,8 @@ document.getElementById("start").onclick = function createGrid() {
             box.setAttribute('id',content)
             gridId.appendChild(box)
             
-            /* quando clicco il box faccio apparire o scomparire il suo numero */
+            /* al click di un box, se non ho perso, controllo se è una bomba o se ha bombe vicine
+            e stampo */
         
             box.onclick = function boxClick(){
                 counterClick++
@@ -114,40 +115,38 @@ document.getElementById("start").onclick = function createGrid() {
             
         }
         
-        
         /* Funzione per creare più box in base alla dimensione della griglia */
         function multipleBoxes(template, diff) {
             for (let i = 0; i < template; i++) {
                 newBox(i + 1, diff)
             }
         }
-        gridId.style.cssText = '' /* inizializzo CSS */
-        gridId.innerHTML = ''     /* inizializzo HTML */
+
+        /* Inizializzo grid */
+        gridId.style.cssText = '' /* inizializzo CSS della grid */
+        gridId.innerHTML = ''     /* inizializzo HTML della grid */
         document.getElementById("loose").style.display = "none" /* inizializzo display del loose */ 
         
         /* Leggo la difficoltà selezionata e in base a quello creo il giusto numero di box */
-        let level = document.getElementById("selectLevel").value 
+        let diff = document.getElementById("selectLevel").value 
         
-        if (level == 'easy'){
+        if (diff == 'easy'){
             gridId.style.cssText = 'grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);'
             multipleBoxes(100, 'easy')
             createRandomArray(16, 100)
             
         }
-        else if (level == 'medium') {
+        else if (diff == 'medium') {
             gridId.style.cssText = 'grid-template-columns:repeat(9,1fr);grid-template-rows:repeat(9,1fr);'
             multipleBoxes(81, 'medium')
             createRandomArray(16, 81)
             
         }
-        
-        else if (level == 'hard') {
+        else if (diff == 'hard') {
             gridId.style.cssText = 'grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(7,1fr);'
             multipleBoxes(49, 'hard')
             createRandomArray(16, 49)
         }
-        
-        
     }
     
     

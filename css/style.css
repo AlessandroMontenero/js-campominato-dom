@@ -34,14 +34,14 @@ body {
         z-index: 1;
     }
 
-    header select,
     header button {
         text-align: center;
         background-color: var(--barsBackgroundColor);
         border: 2px solid var(--borderColor);
         font-size: 0.8rem;
         padding: 8px;
-        margin: 0 1rem 0 1rem
+        margin: 0 1rem 0 1rem;
+        cursor:pointer;
     }
 
     header h2 {
@@ -109,7 +109,7 @@ body {
         position: absolute;
         background-color: white;
         padding: 1rem;
-        border: 2px solid var(--borderColor);
+        border: 3px solid var(--borderColor);
         display: none;
         text-align: center;
     }
@@ -134,4 +134,25 @@ body {
     footer h4 {
         font-size: 0.8rem;
         margin-left: 10px;
+    }
+
+/* CUSTOM SELECT */
+    *,
+    *::before,
+    *::after {
+    box-sizing: border-box;
+    }
+
+    select {
+        appearance: none;
+        background-color: transparent;
+        font-size: 0.8rem;
+        border: 2px solid var(--borderColor);
+        border-radius: 0;
+        padding: 8px;
+        margin: 0 0 0 1rem;
+        width: 150px;
+        cursor: inherit;
+        line-height: inherit;
+        cursor:pointer;
     }
